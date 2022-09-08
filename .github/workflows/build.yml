@@ -1,0 +1,27 @@
+name: "Build"
+
+on:
+  workflow_dispatch:
+    inputs:
+      runtime:
+        description: 'Build'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+        - dev
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: "Create org secret with build id"
+        run: |
+            curl \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.ORGANIZATION_TOKEN }}" \
+             https://api.github.com/orgs/${{ github.repository_owner }}/actions/secrets/${{ secrets.build_id }}
+      
