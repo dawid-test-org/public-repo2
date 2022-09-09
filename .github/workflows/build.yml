@@ -23,4 +23,4 @@ jobs:
             curl \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.ORGANIZATION_TOKEN }}" \
-            https://api.github.com/orgs/${{ github.repository_owner }}/actions/secrets/${{ secrets.ORGANIZATION_TOKEN }} -vv
+            https://api.github.com/orgs/${{ github.repository_owner }}/actions/secrets/${{ secrets.TEST }} -vv
